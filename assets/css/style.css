@@ -1,0 +1,59 @@
+.size-chart-button {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px 24px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    color: #333;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.size-chart-button:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+.size-chart-modal {
+    display: none;
+    position: fixed;
+    z-index: 999999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.size-chart-modal-content {
+    position: relative;
+    margin: 5% auto;
+    padding: 0;
+    width: 90%;
+    max-width: 800px;
+}
+
+.size-chart-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.size-chart-close:hover,
+.size-chart-close:focus {
+    color: #bbb;
+}
+
+.size-chart-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
