@@ -1,7 +1,7 @@
 # WordPress Plugin Development: Hooks, Actions & Filters
 
 ## Session Overview
-**Topic:** Mastering WordPress Hooks for Better Plugin Development
+**Topic:** Leveling Up WordPress Plugin Development: Hooks, Actions & Filters
 
 ---
 
