@@ -405,120 +405,18 @@ add_action( 'wp_enqueue_scripts', 'my_inline_styles' );
 
 ---
 
-## 6. Real-World Example: Complete Plugin
+## 6. Real-World Example: Complete Plugin: Auto Cart Recovery
 
-```php
-<?php
-/**
- * Plugin Name: Custom Content Filter
- * Description: Demonstrates hooks, actions, filters, and script enqueuing
- */
-
-class Custom_Content_Filter {
-    
-    public function __construct() {
-        // Add filters and actions
-        add_filter( 'the_content', array( $this, 'add_reading_time' ), 10, 1 );
-        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-        add_action( 'wp_footer', array( $this, 'add_custom_footer' ), 20 );
-        
-        // Custom action hook for extensibility
-        do_action( 'custom_filter_init', $this );
-    }
-    
-    public function add_reading_time( $content ) {
-        if ( is_single() ) {
-            $word_count = str_word_count( strip_tags( $content ) );
-            $reading_time = ceil( $word_count / 200 );
-            
-            $reading_text = sprintf(
-                '<div class="reading-time">%d min read</div>',
-                $reading_time
-            );
-            
-            $content = $reading_text . $content;
-        }
-        
-        return apply_filters( 'custom_filter_content', $content );
-    }
-    
-    public function enqueue_assets() {
-        // Only on single posts
-        if ( ! is_single() ) {
-            return;
-        }
-        
-        wp_enqueue_style(
-            'custom-filter-style',
-            plugins_url( 'css/style.css', __FILE__ ),
-            array(),
-            '1.0.0'
-        );
-        
-        wp_enqueue_script(
-            'custom-filter-script',
-            plugins_url( 'js/script.js', __FILE__ ),
-            array( 'jquery' ),
-            '1.0.0',
-            true
-        );
-        
-        // Pass data to JavaScript
-        wp_localize_script(
-            'custom-filter-script',
-            'customFilterData',
-            array(
-                'postId' => get_the_ID(),
-                'ajaxUrl' => admin_url( 'admin-ajax.php' )
-            )
-        );
-    }
-    
-    public function add_custom_footer() {
-        if ( is_single() ) {
-            echo '<div class="custom-footer">Thank you for reading!</div>';
-        }
-    }
-}
-
-new Custom_Content_Filter();
-```
 
 ---
 
-## 7. Best Practices & Tips
+## 7. Best Practices
 
 ### Hook Naming Conventions
 - Use unique prefixes: `my_plugin_action_name`
 - Be descriptive: `my_plugin_before_save_post`
 - Use lowercase with underscores
 
-### Performance Considerations
-- Only enqueue scripts where needed
-- Use appropriate priorities
-- Remove unused hooks
-- Cache expensive operations
-
-### Debugging Hooks
-```php
-// See all hooks attached to an action
-global $wp_filter;
-print_r( $wp_filter['the_content'] );
-
-// Check if a hook exists
-if ( has_action( 'init', 'my_function' ) ) {
-    // Hook exists
-}
-```
-
-### Common Mistakes to Avoid
-- Forgetting to specify priority when removing hooks
-- Not checking if functions exist before removing
-- Loading scripts globally instead of conditionally
-- Using wrong hook names
-- Not sanitizing/escaping output in filters
-
----
 
 ## 8. Resources & Further Learning
 
@@ -542,16 +440,3 @@ if ( has_action( 'init', 'my_function' ) ) {
 - `admin_menu` - Add admin pages
 
 ---
-
-## Q&A Session
-
-**Questions to Consider:**
-- When should I use actions vs filters?
-- How do I debug hooks in my plugin?
-- What's the best way to handle script dependencies?
-- How can I make my plugin extensible for other developers?
-
----
-
-**Thank you!**  
-*Happy Plugin Development!* 🚀
