@@ -154,6 +154,9 @@ class WooCommerce_Size_Chart {
             $button_text = get_post_meta($product->get_id(), '_size_chart_button_text', true);
             $button_text = $button_text ? $button_text : __('Size Chart', 'product-size-chart');
             
+            // Apply filter to allow customization of button text
+            $button_text = apply_filters('product_size_chart_button_text', $button_text, $product->get_id());
+            
             $image_id = get_post_meta($product->get_id(), '_size_chart_image_id', true);
             
             if ($image_id) {
