@@ -1,12 +1,11 @@
 # WordPress Plugin Development: Hooks, Actions & Filters
 
 ## Session Overview
-**Duration:** 1 Hour  
 **Topic:** Mastering WordPress Hooks for Better Plugin Development
 
 ---
 
-## 1. Introduction to WordPress Hooks (10 minutes)
+## 1. Introduction to WordPress Hooks
 
 ### What are Hooks?
 Hooks are WordPress's way of allowing plugins and themes to interact with the core functionality without modifying core files. They enable you to "hook into" WordPress at specific points during execution.
@@ -23,7 +22,7 @@ Hooks are WordPress's way of allowing plugins and themes to interact with the co
 
 ---
 
-## 2. Hook Basics (15 minutes)
+## 2. Hook Basics
 
 ### Adding Action Hooks
 
@@ -124,7 +123,7 @@ function my_save_handler( $post_id, $post, $update ) {
 
 ---
 
-## 3. Removing Hooks (10 minutes)
+## 3. Removing Hooks
 
 ### remove_action()
 
@@ -188,7 +187,7 @@ add_action( 'init', 'remove_unwanted_hooks' );
 
 ---
 
-## 4. Enqueueing Scripts Properly (15 minutes)
+## 4. Enqueueing Scripts Properly
 
 ### register_script vs enqueue_script
 
@@ -283,7 +282,7 @@ wp_enqueue_style(
 
 ---
 
-## 5. Inline Scripts (10 minutes)
+## 5. Inline Scripts
 
 ### What are Inline Scripts?
 
@@ -406,7 +405,7 @@ add_action( 'wp_enqueue_scripts', 'my_inline_styles' );
 
 ---
 
-## 6. Real-World Example: Complete Plugin (5 minutes)
+## 6. Real-World Example: Complete Plugin
 
 ```php
 <?php
@@ -487,7 +486,7 @@ new Custom_Content_Filter();
 
 ---
 
-## 7. Best Practices & Tips (5 minutes)
+## 7. Best Practices & Tips
 
 ### Hook Naming Conventions
 - Use unique prefixes: `my_plugin_action_name`
