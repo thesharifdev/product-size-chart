@@ -36,6 +36,9 @@ class WooCommerce_Size_Chart {
     }
     
     public function init() {
+
+        do_action('auto_cart_recovery_before_init');
+
         if (!class_exists('WooCommerce')) {
             return;
         }
@@ -59,6 +62,8 @@ class WooCommerce_Size_Chart {
         // AJAX handler for size chart modal
         add_action('wp_ajax_get_size_chart', array($this, 'ajax_get_size_chart'));
         add_action('wp_ajax_nopriv_get_size_chart', array($this, 'ajax_get_size_chart'));
+
+        do_action('auto_cart_recovery_after_loaded');
     }
     
     public function add_size_chart_tab($tabs) {
